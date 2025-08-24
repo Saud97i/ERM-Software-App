@@ -1,0 +1,42 @@
+{
+  "name": "erm-react-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite --host",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "serve": "vite preview --host",
+    "server": "node server/index.js",
+    "db:prepare": "node server/scripts/db-prepare.js",
+    "dev:server": "node server/scripts/db-prepare.js && cross-env NODE_ENV=development node server/index.js",
+    "start:server": "node server/scripts/db-prepare.js && node server/index.js",
+    "migrate": "node -e \"import('./server/lib/migrate.js').then(m=>m.ensureMigrations()).then(()=>console.log('Migrations complete')).catch(e=>{console.error(e);process.exit(1)})\"",
+    "update-schema": "node server/scripts/update-schema.js",
+    "seed": "node server/scripts/seed.js",
+    "reset-admin": "node server/scripts/reset-admin.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "lucide-react": "^0.441.0",
+    "bcryptjs": "^2.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.18",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.7",
+    "vite": "^5.3.1"
+  }
+}
